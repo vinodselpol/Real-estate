@@ -31,16 +31,17 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       })
       const data = await res.json()
-      if(!data.success){
+      if(data.success === false){
         setError(data.message)
         setLoading(false)
         return
       }
+      
       setLoading(false)
       setError(null)
       //navigate to sign in page is not working
-      
-      navigate('/signin')
+
+      navigate('/sign-in')
       
 
     } catch (error) {
