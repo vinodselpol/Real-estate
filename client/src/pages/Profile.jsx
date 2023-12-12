@@ -12,6 +12,7 @@ function Profile() {
   const [filePerc, setFilePerc] = useState(0)
   const [fileUploadError, setFileUploadError] = useState(false)
   const [formData, setFormData] = useState({})
+  const [updateSucess, setUpdateSuccess] = useState(false)
   const dispatch = useDispatch()
   console.log(formData)
 
@@ -72,6 +73,7 @@ function Profile() {
         return
       }
       dispatch(updateUserSuccess(data))
+      setUpdateSuccess(true)
       
       
     } catch (error) {
@@ -111,6 +113,7 @@ function Profile() {
         <span className='text-red-700 cursor-pointer'>Sign Out</span>
       </div>
       <p className='text-red-700 mt-5'> {error ? error : ""}</p>
+      <p className='text-green-700'> {updateSucess ? 'User is updated successfully' : ""}</p>
     </div>
   )
 }
