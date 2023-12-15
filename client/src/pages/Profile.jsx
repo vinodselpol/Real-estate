@@ -19,6 +19,7 @@ function Profile() {
   console.log(formData)
   const [showListingsError, setShowListingsError] = useState(false)
   const [listingsData, setListingsData] = useState([])
+  const [deleteListingError, setDeleteListingError] = useState(false)
 
   useEffect(() => {
 
@@ -152,8 +153,32 @@ function Profile() {
     }
 
   }
-  console.log(listingsData)
   
+  const handleListingDelete = async (listingId) => {
+    try {
+      setDeleteListingError(false)
+      const res = await fetch(`/api/listing/delete/${listingId}`,{
+        method: 'DELETE',
+      
+      })
+      const data = await res.json()
+     
+      if(data.success == false){
+        setDeleteListingError(true)
+        return
+      }
+
+      
+      setListingsData(data)
+      setListingsData(listingsData.filter((listing) => listing._id !== listingId))
+    
+      
+    } catch (error) {
+      setDeleteListingError(true)
+
+      
+    }
+  }
   return (
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
@@ -203,7 +228,7 @@ function Profile() {
             <h1>{listing.name}</h1>
             </Link>
             <div className='flex flex-col items-center'>
-              <button className=' rounded-lg text-red-700  uppercase p-1'>Delete</button>
+              <button onClick={()=>handleListingDelete(listing._id)} className=' rounded-lg text-red-700  uppercase p-1'>Delete</button>
               <button className=' rounded-lg text-green-700   uppercase'>Edit</button>
               </div>
          
