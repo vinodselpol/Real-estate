@@ -167,7 +167,7 @@ function Profile() {
         setDeleteListingError(true)
         return
       }
-// this is not working
+
       
       setListingsData(data)
       setListingsData(listingsData.filter((listing) => listing._id !== listingId))
