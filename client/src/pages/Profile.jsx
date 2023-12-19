@@ -5,7 +5,7 @@ import { app } from '../firebase'
 import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserStart, deleteUserSuccess, deleteUserFailure, signOutStart, signOutSuccess, signOutFailure} from '../redux/user/userSlice'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { set } from 'mongoose'
+
 
 function Profile() {
   const {currentUser, loading, error} = useSelector((state) => state.user)
@@ -229,7 +229,9 @@ function Profile() {
             </Link>
             <div className='flex flex-col items-center'>
               <button onClick={()=>handleListingDelete(listing._id)} className=' rounded-lg text-red-700  uppercase p-1'>Delete</button>
+              <Link to={`/edit-listing/${listing._id}`}>
               <button className=' rounded-lg text-green-700   uppercase'>Edit</button>
+              </Link>
               </div>
          
           </div>
