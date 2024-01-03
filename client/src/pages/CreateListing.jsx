@@ -174,7 +174,7 @@ function CreateListing() {
         <form onSubmit={handleSubmit} className='flex flex-col sm:flex-row gap-4'>
             <div className=' flex flex-col gap-4 flex-1'>
                 <input type="text" placeholder='Name' className='border p-3 rounded-lg' id='name' maxLength='62' minLength='4' required onChange={handleChange} value={formData.name} />
-                <textarea type="text" placeholder='Description' className='border p-3 rounded-lg' id='description' maxLength='62' minLength='10' required onChange={handleChange} value={formData.description}/>
+                <textarea type="text" placeholder='Description' className='border p-3 rounded-lg' id='description' maxLength='1000' minLength='10' required onChange={handleChange} value={formData.description}/>
                 <input type="text" placeholder='Address' className='border p-3 rounded-lg' id='address' required onChange={handleChange}  value={formData.address}/>
                 <div className='flex gap-6 flex-wrap'>
                     <div className='flex gap-2'>
@@ -210,7 +210,7 @@ function CreateListing() {
                         <p>Baths</p>
                     </div>
                     <div className='flex gap-2 items-center'>
-                        <input className='p-3 border border-gray-300 rounded-lg' type='number' id='regularPrice' min='1' max='10000' required onChange={handleChange} value={formData.regularPrice}/>
+                        <input className='p-3 border border-gray-300 rounded-lg' type='number' id='regularPrice' min='1' max='1000000000' required onChange={handleChange} value={formData.regularPrice}/>
                         <div className='flex flex-col items-center'>
                         <p>Regular price</p>
                         {formData.type === 'rent' && (<p className='text-xs'>($ /month)</p>)}
@@ -220,7 +220,7 @@ function CreateListing() {
                     </div>
                     {formData.offer && (
                           <div className='flex gap-2 items-center'>
-                          <input className='p-3 border border-gray-300 rounded-lg' type='number' id='discountPrice' min='0' max='10000' required onChange={handleChange} value={formData.discountPrice}/>
+                          <input className='p-3 border border-gray-300 rounded-lg' type='number' id='discountPrice' min='0' max='10000000000' required onChange={handleChange} value={formData.discountPrice}/>
                           <div className='flex flex-col items-center'>
                           <p>Discounted price</p>
                           {formData.type === 'rent' && (<p className='text-xs'>($ /month)</p>)}
